@@ -12,15 +12,17 @@ function App() {
   };
 
   const storeLinkData = () => {
-    console.log(shortenedLinks);
     localStorage.setItem('shortened-links', JSON.stringify(shortenedLinks));
   };
+
   React.useEffect(() => {
     if (localStorage.getItem('shortened-links')) {
       setShortenedLinks(JSON.parse(localStorage.getItem('shortened-links')));
     }
 
-    return () => storeLinkData();
+    return function cleanUp() {
+      storeLinkData();
+    };
   }, []);
 
   return (

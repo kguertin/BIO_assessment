@@ -10,7 +10,7 @@ const LinkList = () => {
   const handleCopy = async (shortUrl) => {
     setCopyStatus(true);
     await navigator.clipboard.writeText(shortUrl);
-    setTimeout(() => setCopyStatus(false), 5000);
+    setTimeout(() => setCopyStatus(false), 3000);
   };
 
   return (

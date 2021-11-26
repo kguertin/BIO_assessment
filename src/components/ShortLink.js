@@ -30,18 +30,26 @@ const ShortLink = () => {
   };
 
   return (
-    <div className="search-container">
-      {submitError ? <p>Please enter a URL to shorten </p> : null}
-      <input
-        variant="outlined"
-        value={longUrl}
-        placeholder="Enter Url"
-        onChange={(e) => setLongUrl(e.target.value)}
-        className="url-input"
-      />
-      <Button variant="contained" onClick={handleSubmit} sx={{ ml: 10 }}>
-        Submit
-      </Button>
+    <div>
+      {submitError ? (
+        <p className="error">Please enter a URL to shorten </p>
+      ) : null}
+      <div className="search-container">
+        <input
+          variant="outlined"
+          value={longUrl}
+          placeholder="Enter Url"
+          onChange={(e) => setLongUrl(e.target.value)}
+          className="url-input"
+        />
+        <Button
+          variant="contained"
+          onClick={handleSubmit}
+          sx={{ ml: 10, mt: 5 }}
+        >
+          Submit
+        </Button>
+      </div>
     </div>
   );
 };
