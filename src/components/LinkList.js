@@ -5,6 +5,7 @@ import './linkList.css';
 
 const LinkList = () => {
   const { shortenedLinks } = React.useContext(ShortenedLinkContext);
+
   const [copyStatus, setCopyStatus] = React.useState(false);
 
   const handleCopy = async (shortUrl) => {

@@ -18,16 +18,18 @@ function App() {
   React.useEffect(() => {
     if (localStorage.getItem('shortened-links')) {
       setShortenedLinks(JSON.parse(localStorage.getItem('shortened-links')));
+    } else {
+      localStorage.setItem('shortened-links', JSON.stringify([]));
     }
-
-    return function cleanUp() {
-      storeLinkData();
-    };
   }, []);
+
+  React.useEffect(() => {
+    storeLinkData();
+  }, [shortenedLinks]);
 
   return (
     <ShortenedLinkContext.Provider
-      value={{ shortenedLinks, updateShortenedLinks }}
+      value={{ shortenedLinks, updateShortenedLinks, storeLinkData }}
     >
       <Main />;
     </ShortenedLinkContext.Provider>

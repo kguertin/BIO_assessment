@@ -1,6 +1,6 @@
 import * as React from 'react';
 import axios from 'axios';
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import { ShortenedLinkContext } from '../App';
 import './shortLink.css';
 
@@ -42,11 +42,7 @@ const ShortLink = () => {
           onChange={(e) => setLongUrl(e.target.value)}
           className="url-input"
         />
-        <Button
-          variant="contained"
-          onClick={handleSubmit}
-          sx={{ ml: 10, mt: 5 }}
-        >
+        <Button variant="contained" onClick={handleSubmit} sx={{ ml: 10 }}>
           Submit
         </Button>
       </div>
