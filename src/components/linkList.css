@@ -1,0 +1,19 @@
+.link-container {
+  margin-top: 15px;
+}
+
+.link-item-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.link-item {
+  color: #b1d4e0;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.copied {
+  color: #b1d4e0;
+  font-size: 16px;
+}

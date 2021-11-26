@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import * as React from 'react';
 import './App.css';
+import Main from './views/main';
 
+export const ShortenedLinkContext = React.createContext();
 function App() {
+  const [shortenedLinks, setShortenedLinks] = React.useState([]);
+
+  const updateShortenedLinks = (newLink) => {
+    const updatedLinks = [...shortenedLinks, newLink];
+    setShortenedLinks(updatedLinks);
+  };
+
+  const storeLinkData = () => {
+    console.log(shortenedLinks);
+    localStorage.setItem('shortened-links', JSON.stringify(shortenedLinks));
+  };
+  React.useEffect(() => {
+    if (localStorage.getItem('shortened-links')) {
+      setShortenedLinks(JSON.parse(localStorage.getItem('shortened-links')));
+    }
+
+    return () => storeLinkData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ShortenedLinkContext.Provider
+      value={{ shortenedLinks, updateShortenedLinks }}
+    >
+      <Main />;
+    </ShortenedLinkContext.Provider>
   );
 }
 
